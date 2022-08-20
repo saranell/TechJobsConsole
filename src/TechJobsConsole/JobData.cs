@@ -58,6 +58,18 @@ namespace TechJobsConsole
             return jobs;
         }
 
+        //TODO: Create a new public static method that will search for a string within each of the columns. Name it FindByValue.
+        public static List<Dictionary<string, string>> FindByValue(string value)
+        {
+            foreach (Dictionary<string, string> item in AllJobs)
+            {
+                if (AllJobs.Contains(item))
+                {
+                    AllJobs.Add(item);
+                }
+            }
+            return AllJobs;
+        }
         /*
          * Load and parse data from job_data.csv
          */
