@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -49,7 +51,7 @@ namespace TechJobsConsole
             {
                 string aValue = row[column];
 
-                if (aValue.Contains(value))
+                if (aValue.ToUpper().Contains(value.ToUpper()))
                 {
                     jobs.Add(row);
                 }
@@ -58,18 +60,25 @@ namespace TechJobsConsole
             return jobs;
         }
 
-        //TODO: Create a new public static method that will search for a string within each of the columns.
         public static List<Dictionary<string, string>> FindByValue(string value)
         {
             LoadData();
 
-            List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
+            List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>((IEnumerable<Dictionary<string, string>>)StringComparer.OrdinalIgnoreCase);
 
-            foreach (Dictionary<string, string> item in AllJobs)
+            //Dictionary<string, string> oldDictionary = job;
+            //var comparer = StringComparer.OrdinalIgnoreCase;
+            //var newDictionary = new Dictionary<string, string>(oldDictionary, comparer);
+
+            //Dictionary<string, string> caseInsensitive = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+
+            foreach (Dictionary<string, string> job in AllJobs)
             {
-                if (item.ContainsKey(value) || item.ContainsValue(value))
+                //for each key value pair is the pair value to upper == to value to upper
+                //item.ToDictionary(k => k.Key.ToUpper(), k => k.Value.ToUpper());
+                if (job.ContainsValue(value))
                 {
-                    jobs.Add(item);
+                    jobs.Add(job);
                 }
             }
             return jobs;
