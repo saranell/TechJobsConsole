@@ -68,17 +68,11 @@ namespace TechJobsConsole
 
             foreach (Dictionary<string, string> job in AllJobs)
             {
-                //foreach (Dictionary<string, string> item in AllJobs)
-                //{
-                //    if (item.ContainsValue(value))
-                //        {
-                //            jobs.Add(item);
-                //        }
-                    foreach (KeyValuePair<string, string> pair in job)
-                {
-                    var caseValue = pair.Value.ToUpper();
+                foreach (KeyValuePair<string, string> pair in job)
+                    {
+                    var upperCaseValue = pair.Value.ToUpper();
 
-                    if (job.ContainsValue(value))
+                    if (pair.Value.ToString() == upperCaseValue)
                     {
                         jobs.Add(job);
                     }
