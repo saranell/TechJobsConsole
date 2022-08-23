@@ -64,21 +64,24 @@ namespace TechJobsConsole
         {
             LoadData();
 
-            List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>((IEnumerable<Dictionary<string, string>>)StringComparer.OrdinalIgnoreCase);
-
-            //Dictionary<string, string> oldDictionary = job;
-            //var comparer = StringComparer.OrdinalIgnoreCase;
-            //var newDictionary = new Dictionary<string, string>(oldDictionary, comparer);
-
-            //Dictionary<string, string> caseInsensitive = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
 
             foreach (Dictionary<string, string> job in AllJobs)
             {
-                //for each key value pair is the pair value to upper == to value to upper
-                //item.ToDictionary(k => k.Key.ToUpper(), k => k.Value.ToUpper());
-                if (job.ContainsValue(value))
+                //foreach (Dictionary<string, string> item in AllJobs)
+                //{
+                //    if (item.ContainsValue(value))
+                //        {
+                //            jobs.Add(item);
+                //        }
+                    foreach (KeyValuePair<string, string> pair in job)
                 {
-                    jobs.Add(job);
+                    var caseValue = pair.Value.ToUpper();
+
+                    if (job.ContainsValue(value))
+                    {
+                        jobs.Add(job);
+                    }
                 }
             }
             return jobs;
