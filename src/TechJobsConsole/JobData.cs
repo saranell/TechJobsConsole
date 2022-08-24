@@ -70,9 +70,9 @@ namespace TechJobsConsole
             {
                 foreach (KeyValuePair<string, string> pair in job)
                     {
-                    var upperCaseValue = pair.Value.ToUpper();
+                    //var upperCaseValue = pair.Value.ToUpper();
 
-                    if (pair.Value.ToString() == upperCaseValue)
+                    if (pair.Value.ToUpper().Contains(value.ToUpper()))
                     {
                         jobs.Add(job);
                     }
