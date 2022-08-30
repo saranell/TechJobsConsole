@@ -70,11 +70,11 @@ namespace TechJobsConsole
             {
                 foreach (KeyValuePair<string, string> pair in job)
                     {
-                    //var upperCaseValue = pair.Value.ToUpper();
 
                     if (pair.Value.ToUpper().Contains(value.ToUpper()))
                     {
                         jobs.Add(job);
+                        break;
                     }
                 }
             }
